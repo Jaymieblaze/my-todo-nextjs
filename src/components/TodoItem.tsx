@@ -31,7 +31,7 @@ const TodoItem = ({ todo, onViewDetail, onEdit, onDelete }: TodoItemProps) => {
 
   return (
     <div className="group flex items-center p-4 border-b border-gray-200/80 hover:bg-gray-50 transition-colors duration-200 dark:border-slate-800 dark:hover:bg-slate-800/50">
-      <div className="flex-1 flex items-center space-x-4 cursor-pointer min-w-0" onClick={() => onViewDetail(todo.id)}>
+      <div className="flex-1 flex items-center space-x-4 cursor-pointer min-w-0" onClick={() => onEdit(todo)}>
         {todo.completed ? (
           <CheckCircleIcon className="h-6 w-6 text-green-500 flex-shrink-0" />
         ) : (
