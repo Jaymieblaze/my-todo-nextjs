@@ -132,6 +132,10 @@ const TodosPage = () => {
     setSelectedTodo(todo);
     setIsDeleteModalOpen(true);
   };
+
+  const handleViewDetail = (todo: Todo) => {
+    if (todo.id) router.push(`/todos/${todo.id}`);
+  };
   
   const sortOptions = {
       createdAt: 'Date Created',
@@ -240,6 +244,7 @@ const TodosPage = () => {
                   todo={todo}
                   onEdit={() => handleOpenEditModal(todo)}
                   onDelete={() => handleOpenDeleteModal(todo)}
+                  onViewDetail={handleViewDetail}
                 />
               ))}
             </div>
