@@ -4,7 +4,6 @@ import { EditIcon, TrashIcon, CheckCircleIcon, XCircleIcon } from './Icons';
 
 interface TodoItemProps {
   todo: Todo;
-  onViewDetail: (id: string) => void;
   onEdit: (todo: Todo) => void;
   onDelete: (todo: Todo) => void;
 }
@@ -26,7 +25,7 @@ const priorityColors: Record<string, string> = {
 };
 
 
-const TodoItem = ({ todo, onViewDetail, onEdit, onDelete }: TodoItemProps) => {
+const TodoItem = ({ todo, onEdit, onDelete }: TodoItemProps) => {
   const priorityStyle = priorityColors[todo.priority || 'low'];
 
   return (

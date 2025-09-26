@@ -242,7 +242,6 @@ const TodosPage = () => {
                 <TodoItem
                   key={todo.id}
                   todo={todo}
-                  onViewDetail={() => handleViewDetail(todo.id)}
                   onEdit={() => handleOpenEditModal(todo)}
                   onDelete={() => handleOpenDeleteModal(todo)}
                 />
