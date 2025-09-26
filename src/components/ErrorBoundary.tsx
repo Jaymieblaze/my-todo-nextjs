@@ -25,7 +25,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   };
 
   // ## 4. Type the lifecycle method's parameters and return value
-  static getDerivedStateFromError(_: Error): Partial<ErrorBoundaryState> {
+  static getDerivedStateFromError(_: Error) {
     // Update state so the next render will show the fallback UI.
     return { hasError: true };
   }

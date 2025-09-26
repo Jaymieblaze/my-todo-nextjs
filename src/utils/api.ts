@@ -1,4 +1,5 @@
-// @ts-nocheck
+
+import { firestore } from '@/lib/firebase';
 import { collection, doc, getDocs, getDoc, setDoc, updateDoc, deleteDoc, writeBatch, FirestoreDataConverter, DocumentData, QueryDocumentSnapshot, SnapshotOptions, SetOptions } from 'firebase/firestore';
 import { Todo } from './db';
 
@@ -19,7 +20,7 @@ const todoConverter: FirestoreDataConverter<Todo> = {
     };
   },
   
-  toFirestore: (todo: Partial<Todo>, options?: SetOptions): DocumentData => {
+  toFirestore: (todo: Partial<Todo>): DocumentData => {
     const { id, ...data } = todo;
     return data;
   }

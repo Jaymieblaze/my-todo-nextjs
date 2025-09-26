@@ -163,7 +163,7 @@ const TodosPage = () => {
 
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const currentTodos = sortedAndFilteredTodos.slice(startIndex, startIndex + ITEMS_PER_PAGE);
-  const totalPages = Math.ceil(sortedAndFilteredTodos.length / ITEMS_PER_PAGE);
+  // const totalPages = Math.ceil(filteredAndSortedTodos.length / itemsPerPage);
 
   const handleViewDetail = (id: string | undefined) => {
     if (id) router.push(`/todos/${id}`);

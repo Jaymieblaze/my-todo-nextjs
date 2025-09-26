@@ -2,7 +2,7 @@ import React from 'react';
 import * as SelectPrimitive from '@radix-ui/react-select';
 
 // Define the props by extending the standard HTML select attributes.
-export interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {}
+
 
 const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
   ({ className, children, ...props }, ref) => {
