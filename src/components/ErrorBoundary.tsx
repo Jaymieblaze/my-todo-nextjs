@@ -2,20 +2,20 @@ import React, { Component, ReactNode, ErrorInfo } from 'react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from './Card';
 import Button from './Button';
 
-// ## 1. Define the types for the component's props
+// Define the types for the component's props
 interface ErrorBoundaryProps {
   children: ReactNode;
   showDetails?: boolean; // Optional prop to control error detail visibility
 }
 
-// ## 2. Define the types for the component's state
+// Define the types for the component's state
 interface ErrorBoundaryState {
   hasError: boolean;
   error: Error | null;
   errorInfo: ErrorInfo | null;
 }
 
-// ## 3. Apply the prop and state types to the component
+// Apply the prop and state types to the component
 class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   // Use public class field for cleaner state initialization
   public state: ErrorBoundaryState = {
@@ -24,14 +24,14 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
     errorInfo: null,
   };
 
-  // ## 4. Type the lifecycle method's parameters and return value
+  // Type the lifecycle method's parameters and return value
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   static getDerivedStateFromError(error: Error) {
     // Update state so the next render will show the fallback UI.
     return { hasError: true };
   }
 
-  // ## 5. Type the lifecycle method's parameters
+  // Type the lifecycle method's parameters
   public componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
     // You can log the error to an error reporting service
     console.error("Uncaught error:", error, errorInfo);
