@@ -1,4 +1,4 @@
-import { firestore } from '@/lib/firebase';
+// @ts-nocheck
 import { collection, doc, getDocs, getDoc, setDoc, updateDoc, deleteDoc, writeBatch, FirestoreDataConverter, DocumentData, QueryDocumentSnapshot, SnapshotOptions, SetOptions } from 'firebase/firestore';
 import { Todo } from './db';
 

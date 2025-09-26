@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import { LoaderSpin } from '@/components/Icons';
 
-export default function HomePage() {
+export default function Page() {
   const { user, loading } = useAuth();
   const router = useRouter();
 
@@ -26,4 +26,5 @@ export default function HomePage() {
     </div>
   );
 }
+
 
