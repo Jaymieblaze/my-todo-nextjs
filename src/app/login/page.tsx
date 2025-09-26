@@ -25,7 +25,7 @@ import { useAuth } from '@/context/AuthContext';
 const cn = (...classes: (string | undefined | null | false)[]) => classes.filter(Boolean).join(' ');
 
 const GoogleIcon = () => (
-    <svg className="mr-3 h-5 w-5" viewBox="0 0 24 24">
+  <svg className="mr-3 h-5 w-5" viewBox="0 0 24 24">
     <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
     <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
     <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" />
@@ -50,13 +50,13 @@ const EyeOffIcon = ({ className }: { className?: string }) => (
 );
 
 const createDummyTasks = async (user: User) => {
-    const dummyTodos: Omit<Todo, 'id' | 'createdAt' | 'updatedAt'>[] = [
-        { title: "Welcome to your new to-do list!", completed: false, priority: "medium", userId: 1 },
-        { title: "Click the pencil icon to edit this task", completed: false, priority: "low", userId: 1 },
-        { title: "Click the checkbox to mark a task as complete", completed: true, priority: "low", userId: 1 },
-        { title: "Use the 'AI Assistant' to generate new tasks", completed: false, priority: "high", userId: 1 },
-    ];
-    await addMultipleTodosToFirestore(user.uid, dummyTodos);
+  const dummyTodos: Omit<Todo, 'id' | 'createdAt' | 'updatedAt'>[] = [
+    { title: "Welcome to your new to-do list!", completed: false, priority: "medium", userId: 1 },
+    { title: "Click the pencil icon to edit this task", completed: false, priority: "low", userId: 1 },
+    { title: "Click the checkbox to mark a task as complete", completed: true, priority: "low", userId: 1 },
+    { title: "Use the 'AI Assistant' to generate new tasks", completed: false, priority: "high", userId: 1 },
+  ];
+  await addMultipleTodosToFirestore(user.uid, dummyTodos);
 };
 
 function AuthContent() {
@@ -70,7 +70,7 @@ function AuthContent() {
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isPasswordVisible, setIsPasswordVisible] = useState(false); 
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [verificationSent, setVerificationSent] = useState(false);
@@ -86,9 +86,9 @@ function AuthContent() {
   const validatePassword = (password: string) => password.length >= 8 && /\d/.test(password) && /[a-zA-Z]/.test(password);
 
   const clearState = () => {
-      setError(null);
-      setResetSentMessage(null);
-      setVerificationSent(false);
+    setError(null);
+    setResetSentMessage(null);
+    setVerificationSent(false);
   }
 
   const handleEmailSubmit = async (e: React.FormEvent) => {
@@ -100,8 +100,8 @@ function AuthContent() {
       return;
     }
     if (!isLogin && !validatePassword(password)) {
-        setError('Password must be at least 8 characters long and include numbers and letters.');
-        return;
+      setError('Password must be at least 8 characters long and include numbers and letters.');
+      return;
     }
     if (!isLogin && (!firstName.trim() || !lastName.trim())) {
       setError('First and last name are required.');
@@ -138,34 +138,34 @@ function AuthContent() {
     setLoading(true);
     clearState();
     try {
-        const result = await signInWithPopup(auth, new GoogleAuthProvider());
-        const user = result.user;
-        const additionalInfo = getAdditionalUserInfo(result);
-        if (additionalInfo?.isNewUser) {
-            await createDummyTasks(user);
-        }
-        router.push('/todos');
+      const result = await signInWithPopup(auth, new GoogleAuthProvider());
+      const user = result.user;
+      const additionalInfo = getAdditionalUserInfo(result);
+      if (additionalInfo?.isNewUser) {
+        await createDummyTasks(user);
+      }
+      router.push('/todos');
     } catch (err) {
-        setError((err as AuthError).message);
+      setError((err as AuthError).message);
     } finally {
-        setLoading(false);
+      setLoading(false);
     }
   };
 
   const handlePasswordReset = async () => {
     clearState();
     if (!validateEmail(email)) {
-        setError('Please enter a valid email to reset your password.');
-        return;
+      setError('Please enter a valid email to reset your password.');
+      return;
     }
     setLoading(true);
     try {
-        await sendPasswordResetEmail(auth, email);
-        setResetSentMessage('Password reset link sent! Please check your inbox.');
+      await sendPasswordResetEmail(auth, email);
+      setResetSentMessage('Password reset link sent! Please check your inbox.');
     } catch (err) {
-        setError((err as AuthError).message);
+      setError((err as AuthError).message);
     } finally {
-        setLoading(false);
+      setLoading(false);
     }
   };
 
@@ -194,11 +194,11 @@ function AuthContent() {
           <div className="text-center">
             <h1 className="text-3xl font-bold dark:text-white">Verify Your Email</h1>
             <p className="text-balance text-gray-500 dark:text-gray-400">
-              We've sent a verification link to <strong>{email}</strong>. Please check your inbox and click the link to activate your account.
+              We&apos;ve sent a verification link to <strong>{email}</strong>. Please check your inbox and click the link to activate your account.
             </p>
           </div>
-          <Button 
-            variant="outline" 
+          <Button
+            variant="outline"
             onClick={() => {
               setVerificationSent(false);
               setIsLogin(true);
@@ -214,8 +214,8 @@ function AuthContent() {
   return (
     <div className="w-full h-screen flex-grow lg:grid lg:grid-cols-2">
       <div className="hidden bg-gray-100 dark:bg-slate-900 lg:block">
-        <div 
-          className="h-full w-full object-cover" 
+        <div
+          className="h-full w-full object-cover"
           style={{
             backgroundImage: "url('https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
             backgroundSize: 'cover',
@@ -233,7 +233,7 @@ function AuthContent() {
               <div className="grid gap-2 text-center">
                 <h1 className="text-3xl font-bold dark:text-white">Reset Password</h1>
                 <p className="text-balance text-gray-500 dark:text-gray-400">
-                  Enter your email and we'll send you a link to get back into your account.
+                  Enter your email and we&apos;ll send you a link to get back into your account.
                 </p>
               </div>
               <div className="grid gap-4">
@@ -248,9 +248,9 @@ function AuthContent() {
                   Send Reset Link
                 </Button>
               </div>
-               <div className="mt-4 text-center text-sm">
+              <div className="mt-4 text-center text-sm">
                 <button onClick={() => setIsResetMode(false)} className="font-medium text-indigo-600 hover:underline dark:text-indigo-400">
-                    Back to Login
+                  Back to Login
                 </button>
               </div>
             </>
@@ -261,8 +261,8 @@ function AuthContent() {
                   {isLogin ? 'Welcome Back!' : 'Create an Account'}
                 </h1>
                 <p className="text-balance text-gray-500 dark:text-gray-400">
-                  {isLogin 
-                    ? "Enter your email below to login to your account" 
+                  {isLogin
+                    ? "Enter your email below to login to your account"
                     : "Enter your information to create an account"}
                 </p>
               </div>
@@ -284,26 +284,26 @@ function AuthContent() {
                   <Input id="email" type="email" placeholder="m@example.com" value={email} onChange={e => setEmail(e.target.value)} required disabled={loading} />
                 </div>
                 <div className="grid gap-2">
-                    <div className="flex items-center">
-                        <label htmlFor="password" className="dark:text-gray-200">Password</label>
-                        {isLogin && (
-                            <button type="button" onClick={() => setIsResetMode(true)} className="ml-auto inline-block text-sm text-indigo-600 hover:underline dark:text-indigo-400">
-                                Forgot password?
-                            </button>
-                        )}
-                    </div>
+                  <div className="flex items-center">
+                    <label htmlFor="password" className="dark:text-gray-200">Password</label>
+                    {isLogin && (
+                      <button type="button" onClick={() => setIsResetMode(true)} className="ml-auto inline-block text-sm text-indigo-600 hover:underline dark:text-indigo-400">
+                        Forgot password?
+                      </button>
+                    )}
+                  </div>
                   <div className="relative">
-                    <Input 
-                      id="password" 
-                      type={isPasswordVisible ? 'text' : 'password'} 
-                      placeholder="********" 
-                      value={password} 
-                      onChange={e => setPassword(e.target.value)} 
-                      required 
-                      disabled={loading} 
+                    <Input
+                      id="password"
+                      type={isPasswordVisible ? 'text' : 'password'}
+                      placeholder="********"
+                      value={password}
+                      onChange={e => setPassword(e.target.value)}
+                      required
+                      disabled={loading}
                     />
-                    <button 
-                      type="button" 
+                    <button
+                      type="button"
                       onClick={() => setIsPasswordVisible(!isPasswordVisible)}
                       className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-gray-600"
                     >

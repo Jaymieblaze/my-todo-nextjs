@@ -25,7 +25,8 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   };
 
   // ## 4. Type the lifecycle method's parameters and return value
-  static getDerivedStateFromError(_: Error) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  static getDerivedStateFromError(error: Error) {
     // Update state so the next render will show the fallback UI.
     return { hasError: true };
   }
@@ -45,7 +46,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
             <CardHeader>
               <CardTitle className="text-red-600">Something went wrong.</CardTitle>
               <CardDescription>
-                We're sorry, an unexpected error occurred. Please try again.
+                We&apos;re sorry, an unexpected error occurred. Please try again.
               </CardDescription>
             </CardHeader>
             <CardContent>

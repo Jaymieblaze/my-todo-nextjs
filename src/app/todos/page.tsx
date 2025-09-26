@@ -78,7 +78,7 @@ const TodosPage = () => {
     return () => unsubscribe();
   }, [user, router]);
 
-  const handleOperation = async (action: () => Promise<any>, errorMessage: string) => {
+  const handleOperation = async (action: () => Promise<unknown>, errorMessage: string) => {
     setOperationError(null);
     try {
       await action();
@@ -164,10 +164,6 @@ const TodosPage = () => {
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const currentTodos = sortedAndFilteredTodos.slice(startIndex, startIndex + ITEMS_PER_PAGE);
   // const totalPages = Math.ceil(filteredAndSortedTodos.length / itemsPerPage);
-
-  const handleViewDetail = (id: string | undefined) => {
-    if (id) router.push(`/todos/${id}`);
-  };
 
   return (
     <div className="container mx-auto p-4 sm:p-6 lg:p-8 max-w-4xl">

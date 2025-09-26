@@ -13,7 +13,6 @@ import {
   DocumentData, 
   QueryDocumentSnapshot, 
   SnapshotOptions, 
-  SetOptions, 
   WithFieldValue, 
   PartialWithFieldValue 
 } from 'firebase/firestore';
@@ -37,6 +36,7 @@ const todoConverter: FirestoreDataConverter<Todo> = {
   },
   
   toFirestore: (modelObject: WithFieldValue<Todo> | PartialWithFieldValue<Todo>): DocumentData => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { id, ...data } = modelObject;
     return data;
   }
