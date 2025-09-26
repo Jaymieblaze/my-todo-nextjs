@@ -65,7 +65,7 @@ const AddTodoModal = ({ isOpen, onClose, onAddTodo }: AddTodoModalProps) => {
             </div>
             <div className="space-y-2">
                 <label htmlFor="priority" className="text-sm font-medium dark:text-slate-300">Priority</label>
-                <Select id="priority" value={priority} onChange={e => setPriority(e.target.value as 'low' | 'medium' | 'high')}>
+                <Select id="priority" value={priority} onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setPriority(e.target.value as 'low' | 'medium' | 'high')}>
                     <option value="low">Low</option>
                     <option value="medium">Medium</option>
                     <option value="high">High</option>

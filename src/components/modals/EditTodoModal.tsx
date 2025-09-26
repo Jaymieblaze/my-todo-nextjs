@@ -62,7 +62,7 @@ const EditTodoModal = ({ isOpen, onClose, todo, onUpdateTodo }: EditTodoModalPro
           <Input
             id="edit-title"
             value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)}
             aria-label="Todo title"
           />
         </div>
@@ -71,11 +71,11 @@ const EditTodoModal = ({ isOpen, onClose, todo, onUpdateTodo }: EditTodoModalPro
         <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
                 <label htmlFor="edit-due-date" className="text-sm font-medium dark:text-slate-300">Due Date</label>
-                <Input id="edit-due-date" type="date" value={dueDate} onChange={e => setDueDate(e.target.value)} />
+                <Input id="edit-due-date" type="date" value={dueDate} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDueDate(e.target.value)} />
             </div>
             <div className="space-y-2">
                 <label htmlFor="edit-priority" className="text-sm font-medium dark:text-slate-300">Priority</label>
-                <Select id="edit-priority" value={priority} onChange={e => setPriority(e.target.value as 'low' | 'medium' | 'high')}>
+                <Select id="edit-priority" value={priority} onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setPriority(e.target.value as 'low' | 'medium' | 'high')}>
                     <option value="low">Low</option>
                     <option value="medium">Medium</option>
                     <option value="high">High</option>
@@ -87,7 +87,7 @@ const EditTodoModal = ({ isOpen, onClose, todo, onUpdateTodo }: EditTodoModalPro
           id="edit-completed"
           label="Mark as completed"
           checked={completed}
-          onChange={(e) => setCompleted(e.target.checked)}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCompleted(e.target.checked)}
         />
         {error && <p className="text-red-500 text-sm text-center">{error}</p>}
       </div>
